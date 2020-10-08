@@ -19,6 +19,7 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import javax.swing.JToggleButton;
 import java.awt.Color;
+import java.awt.Window.Type;
 
 public class Fibonacci extends JFrame {
 	int x,y,z,v3;
@@ -50,19 +51,19 @@ public class Fibonacci extends JFrame {
 	public Fibonacci() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 335, 304);
+		setBounds(100, 100, 429, 324);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
 		JButton btnCalcular = new JButton("Calcular");
-		btnCalcular.setBounds(new Rectangle(0, 0, 10, 10));
-		contentPane.add(btnCalcular, BorderLayout.SOUTH);
+		btnCalcular.setBounds(new Rectangle(89, 256, 249, 21));
+		contentPane.add(btnCalcular);
 		
 		textField = new JTextField();
-		textField.setBounds(new Rectangle(0, 50, 10, 10));
-		contentPane.add(textField, BorderLayout.CENTER);
+		textField.setBounds(new Rectangle(100, 68, 213, 143));
+		contentPane.add(textField);
 		textField.setColumns(10);
 		btnCalcular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
