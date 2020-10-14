@@ -1,8 +1,10 @@
 package Puzzle;
 
+import java.util.*;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
@@ -12,13 +14,14 @@ import java.awt.GridLayout;
 import java.awt.CardLayout;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
-import java.util.Random;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Jueguito extends JFrame {
 
 	private JPanel contentPane;
+	private JButton btnIniciar;
 
 	/**
 	 * Launch the application.
@@ -57,9 +60,8 @@ public class Jueguito extends JFrame {
 		contentPane.add(btnButton1);
 		
 		JButton btnButton2 = new JButton("2");
-		sl_contentPane.putConstraint(SpringLayout.NORTH, btnButton2, 0, SpringLayout.NORTH, btnButton1);
-		sl_contentPane.putConstraint(SpringLayout.WEST, btnButton2, 6, SpringLayout.EAST, btnButton1);
-		sl_contentPane.putConstraint(SpringLayout.SOUTH, btnButton2, 0, SpringLayout.SOUTH, btnButton1);
+		sl_contentPane.putConstraint(SpringLayout.NORTH, btnButton2, 15, SpringLayout.NORTH, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.WEST, btnButton2, 80, SpringLayout.WEST, contentPane);
 		sl_contentPane.putConstraint(SpringLayout.EAST, btnButton2, -285, SpringLayout.EAST, contentPane);
 		contentPane.add(btnButton2);
 		
@@ -85,6 +87,7 @@ public class Jueguito extends JFrame {
 		contentPane.add(btnButton5);
 		
 		JButton btnButton6 = new JButton("6");
+		sl_contentPane.putConstraint(SpringLayout.SOUTH, btnButton2, -6, SpringLayout.NORTH, btnButton6);
 		sl_contentPane.putConstraint(SpringLayout.NORTH, btnButton6, 6, SpringLayout.SOUTH, btnButton1);
 		sl_contentPane.putConstraint(SpringLayout.WEST, btnButton6, 0, SpringLayout.WEST, contentPane);
 		sl_contentPane.putConstraint(SpringLayout.SOUTH, btnButton6, -283, SpringLayout.SOUTH, contentPane);
@@ -92,9 +95,8 @@ public class Jueguito extends JFrame {
 		contentPane.add(btnButton6);
 		
 		JButton btnButton7 = new JButton("7");
-		sl_contentPane.putConstraint(SpringLayout.NORTH, btnButton7, 0, SpringLayout.NORTH, btnButton6);
+		sl_contentPane.putConstraint(SpringLayout.NORTH, btnButton7, 6, SpringLayout.SOUTH, btnButton1);
 		sl_contentPane.putConstraint(SpringLayout.WEST, btnButton7, 0, SpringLayout.WEST, btnButton2);
-		sl_contentPane.putConstraint(SpringLayout.SOUTH, btnButton7, 0, SpringLayout.SOUTH, btnButton6);
 		sl_contentPane.putConstraint(SpringLayout.EAST, btnButton7, 0, SpringLayout.EAST, btnButton2);
 		contentPane.add(btnButton7);
 		
@@ -120,6 +122,7 @@ public class Jueguito extends JFrame {
 		contentPane.add(btnButton10);
 		
 		JButton btnButton11 = new JButton("11");
+		sl_contentPane.putConstraint(SpringLayout.SOUTH, btnButton7, -6, SpringLayout.NORTH, btnButton11);
 		sl_contentPane.putConstraint(SpringLayout.NORTH, btnButton11, 6, SpringLayout.SOUTH, btnButton6);
 		sl_contentPane.putConstraint(SpringLayout.WEST, btnButton11, 0, SpringLayout.WEST, btnButton1);
 		sl_contentPane.putConstraint(SpringLayout.SOUTH, btnButton11, -211, SpringLayout.SOUTH, contentPane);
@@ -224,39 +227,69 @@ public class Jueguito extends JFrame {
 		sl_contentPane.putConstraint(SpringLayout.EAST, btnButton25, 0, SpringLayout.EAST, btnButton5);
 		contentPane.add(btnButton25);
 		
-		JButton btnIniciar = new JButton("Jugar");
+		btnIniciar = new JButton("Jugar");
+		sl_contentPane.putConstraint(SpringLayout.NORTH, btnIniciar, 6, SpringLayout.SOUTH, btnButton21);
+		sl_contentPane.putConstraint(SpringLayout.WEST, btnIniciar, 139, SpringLayout.WEST, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.EAST, btnIniciar, -171, SpringLayout.EAST, contentPane);
 		btnIniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				for(int x = 0; x==24; x++)
+				JButton[] ArrayJButtons = {btnButton1,btnButton2,btnButton3,btnButton4,btnButton5,btnButton6,btnButton7,btnButton8,btnButton9,btnButton10,btnButton11,btnButton12,btnButton13,btnButton14,btnButton15,btnButton16,btnButton17,btnButton18,btnButton19,btnButton20,btnButton21,btnButton22,btnButton23,btnButton24,btnButton25};
+				for(int x = 0; x<=24; x++)
 				{
-					JButton BotonAuxiliar = new JButton();
-					ArrayJButtons[x] = BotonAuxiliar;
+					ArrayJButtons[x].setText("");
 				}
-				
+				RandomNum();
+				for(int y = 0; y<=23; y++)
+				{
+					ArrayJButtons[y].setText(Integer.toString(vector.elementAt(y)));
+				}
+				btnIniciar.setEnabled(false);
 			}
 		});
-		sl_contentPane.putConstraint(SpringLayout.NORTH, btnIniciar, 6, SpringLayout.SOUTH, btnButton22);
-		sl_contentPane.putConstraint(SpringLayout.WEST, btnIniciar, 139, SpringLayout.WEST, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.EAST, btnIniciar, 29, SpringLayout.EAST, btnButton3);
 		contentPane.add(btnIniciar);
 		
 		JButton btnSalir = new JButton("Salir");
+		sl_contentPane.putConstraint(SpringLayout.WEST, btnSalir, 160, SpringLayout.WEST, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.EAST, btnSalir, -188, SpringLayout.EAST, contentPane);
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
 			}
 		});
 		sl_contentPane.putConstraint(SpringLayout.NORTH, btnSalir, 6, SpringLayout.SOUTH, btnIniciar);
-		sl_contentPane.putConstraint(SpringLayout.WEST, btnSalir, 0, SpringLayout.WEST, btnButton3);
 		sl_contentPane.putConstraint(SpringLayout.SOUTH, btnSalir, -6, SpringLayout.SOUTH, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.EAST, btnSalir, -188, SpringLayout.EAST, contentPane);
 		contentPane.add(btnSalir);
-		public JButton[] ArrayJButtons = {btnButton1,btnButton2,btnButton3,btnButton4,btnButton5,btnButton6,btnButton7,btnButton8,btnButton9,btnButton10,btnButton11,btnButton12,btnButton13,btnButton14,btnButton15,btnButton16,btnButton17,btnButton18,btnButton19,btnButton20,btnButton21,btnButton22,btnButton23,btnButton24,btnButton25};
+		
 	}
-	public int RandomNum()
+	Vector<Integer> vector = new Vector<>();
+	int[] intArray = new int[23];
+	
+	public void RandomNum()
 	{
 		Random Alazar = new Random();
 		int upperbound = 25;
-		return Alazar.nextInt(upperbound);
+		while(vector.size() <= 23)
+		{
+			int NumAl = Alazar.nextInt(upperbound);
+			if(vector.size() == 0) 
+			{
+				vector.addElement(NumAl);
+			}
+			else
+			{
+				for(int i = 1; i<=vector.size(); i++)
+				{
+					if(vector.elementAt(i) == vector.lastElement())
+					{
+						continue;
+					}
+					else 
+					{
+						vector.addElement(NumAl);
+					}
+				}
+			}
+		}
 	}
-	
+
 }
