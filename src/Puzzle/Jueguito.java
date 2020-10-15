@@ -241,7 +241,8 @@ public class Jueguito extends JFrame {
 				RandomNum();
 				for(int y = 0; y<=23; y++)
 				{
-					ArrayJButtons[y].setText(Integer.toString(vector.elementAt(y)));
+					String valor = Integer.toString(vector.elementAt(y));
+					ArrayJButtons[y].setText(valor);
 				}
 				btnIniciar.setEnabled(false);
 			}
@@ -270,22 +271,27 @@ public class Jueguito extends JFrame {
 		int upperbound = 25;
 		while(vector.size() <= 23)
 		{
-			int NumAl = Alazar.nextInt(upperbound);
+			int NumAl1 = Alazar.nextInt(upperbound);
 			if(vector.size() == 0) 
 			{
-				vector.addElement(NumAl);
+				vector.add(NumAl1);
+				 JOptionPane.showMessageDialog(null, vector.lastElement() + " Si sirve", "Resultado", JOptionPane.INFORMATION_MESSAGE);
 			}
 			else
 			{
-				for(int i = 1; i<=vector.size(); i++)
+				for(int i = 0; i <= vector.size(); i++)
 				{
-					if(vector.elementAt(i) == vector.lastElement())
+					int NumAl = Alazar.nextInt(upperbound);
+					if(vector.elementAt(i) == NumAl)
 					{
+						JOptionPane.showMessageDialog(null, vector.elementAt(i) + " No entra", "Resultado", JOptionPane.INFORMATION_MESSAGE);
 						continue;
+						
 					}
 					else 
 					{
-						vector.addElement(NumAl);
+						vector.add(NumAl);
+						JOptionPane.showMessageDialog(null, vector.lastElement() + " Si sirve", "Resultado", JOptionPane.INFORMATION_MESSAGE);
 					}
 				}
 			}
