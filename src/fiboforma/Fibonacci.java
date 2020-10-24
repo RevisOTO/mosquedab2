@@ -85,7 +85,7 @@ public class Fibonacci extends JFrame {
 					
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "Debe llenar todos los espacios", "Error", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Debe llenar todos los espacios", "Error prro", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});
