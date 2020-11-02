@@ -8,7 +8,8 @@ class MasHilos {
         MiHilo miHilo2 = MiHilo.CrearHilo("El hilo 2");
         MiHilo miHilo3 = MiHilo.CrearHilo("El hilo 3");
 
-        for (int i = 0; i < 25; i++) {
+        for (int i = 0; i < 25; i++) 
+        {
             System.out.print(".");
                 try {
 					Thread.sleep(80);
